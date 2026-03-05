@@ -1,1 +1,10 @@
-
+SELECT
+  sh.kintone_code,
+  si.shop_id,
+  max(si.publish_datetime) AS datetime,
+  MAX(si.updated) max_up
+FROM machine_arrivals si
+left join shops sh on si.shop_id= sh.id
+where sh.kintone_code not like "DMM%"
+GROUP BY si.shop_id
+ORDER BY `si`.`shop_id` ASC;
