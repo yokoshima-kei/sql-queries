@@ -1,1 +1,3 @@
-
+SELECT sh.kintone_code, sdr.shop_id, MAX(sdr.`datetime`) AS max_publish_datetime, sdr.updated 
+FROM shop_dedama_rankings sdr left join shops sh on sdr.shop_id = sh.id 
+where sh.kintone_code not like "DMM%" GROUP BY sdr.shop_id ORDER BY `sh`.`kintone_code` ASC;
